@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI智能广告 - OAuth 授权助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 3rem;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+        }
+
+        h1 {
+            color: #2d3748;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #718096;
+            font-size: 1rem;
+        }
+
+        .info-card {
+            background: #fff5f5;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #fed7d7;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #742a2a;
+            font-weight: 600;
+        }
+
+        .info-value {
+            color: #2d3748;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .steps {
+            margin-top: 2rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-number {
+            width: 2rem;
+            height: 2rem;
+            background: #ff6b6b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-desc {
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        .code-block {
+            background: #1a202c;
+            color: #fc8181;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .alert {
+            background: #fffaf0;
+            border-left: 4px solid #ed8936;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .alert-title {
+            font-weight: 600;
+            color: #9c4221;
+            margin-bottom: 0.5rem;
+        }
+
+        .alert-text {
+            color: #7c2d12;
+            font-size: 0.9rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <svg width="80" height="80" viewBox="0 0 512 512" fill="none">
+                    <circle cx="256" cy="256" r="220" fill="#ff6b6b" opacity="0.1"/>
+                    <path d="M256 100C167.2 100 100 167.2 100 256C100 344.8 167.2 412 256 412" stroke="#ff6b6b" stroke-width="20" fill="none"/>
+                    <circle cx="380" cy="256" r="40" fill="none" stroke="#ee5a6f" stroke-width="8"/>
+                    <circle cx="380" cy="256" r="15" fill="#ee5a6f"/>
+                    <path d="M420 240L440 260L400 300" stroke="#ff6b6b" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+            </div>
+            <h1>📢 AI智能广告<span class="badge">巨量广告</span></h1>
+            <p class="subtitle">巨量广告 OAuth 授权助手</p>
+        </div>
+
+        <div class="info-card">
+            <div class="info-row">
+                <span class="info-label">应用名称</span>
+                <span class="info-value">AI智能广告</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">App ID</span>
+                <span class="info-value">1846842779198394</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">回调地址</span>
+                <span class="info-value">http://localhost:8080/callback</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">应用类型</span>
+                <span class="info-value">巨量广告PC版</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">状态</span>
+                <span class="status">✅ 已上线</span>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="startOAuth()">
+                🚀 开始授权
+            </button>
+            <a href="/" class="btn btn-secondary">
+                📱 返回应用
+            </a>
+        </div>
+
+        <div class="alert">
+            <div class="alert-title">💡 温馨提示</div>
+            <div class="alert-text">
+                点击"开始授权"后，会打开新窗口跳转到巨量广告授权页面。<br>
+                授权成功后，授权码会自动返回到回调地址。
+            </div>
+        </div>
+
+        <div class="steps">
+            <h3 style="color: #2d3748; margin-bottom: 1rem;">📋 授权步骤</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <div class="step-title">点击"开始授权"按钮</div>
+                    <div class="step-desc">会打开新窗口跳转到巨量广告授权页面</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <div class="step-title">登录账号</div>
+                    <div class="step-desc">使用您的今日头条/抖音账号登录</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <div class="step-title">确认授权</div>
+                    <div class="step-desc">同意授权应用访问您的广告账户</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <div class="step-title">自动返回</div>
+                    <div class="step-desc">授权成功后会自动跳转回回调地址</div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <div class="step-title">获取Token</div>
+                    <div class="step-desc">使用授权码换取 Access Token</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="code-block">完整授权URL：
+https://open.oceanengine.com/audit/oauth.html?app_id=1846842779198394&state=random_state&material_auth=1&rid=b5757qizsb5&redirect_uri=http://localhost:8080/callback</div>
+    </div>
+
+    <script>
+        function startOAuth() {
+            const appId = '1846842779198394';
+            const redirectUri = 'http://localhost:8080/callback';
+            const state = Math.random().toString(36).substring(7);
+            
+            // 巨量广告授权地址
+            const authUrl = `https://open.oceanengine.com/audit/oauth.html?app_id=${appId}&state=${state}&material_auth=1&rid=b5757qizsb5&redirect_uri=${encodeURIComponent(redirectUri)}`;
+            
+            console.log('Opening OAuth URL:', authUrl);
+            
+            // 打开授权窗口
+            const authWindow = window.open(
+                authUrl,
+                'oceanengine_oauth',
+                'width=800,height=600,left=200,top=100'
+            );
+            
+            // 监听回调消息
+            window.addEventListener('message', function(event) {
+                if (event.data && event.data.type === 'oauth_callback') {
+                    console.log('OAuth callback received:', event.data);
+                    alert(`✅ 授权成功！\n\n授权码: ${event.data.code}\n\n请查看浏览器控制台获取完整信息`);
+                    
+                    // 关闭授权窗口
+                    if (authWindow) {
+                        authWindow.close();
+                    }
+                }
+            });
+        }
+
+        // 页面加载完成
+        console.log('OAuth Helper (OceanEngine) loaded');
+        console.log('App ID:', '1846842779198394');
+        console.log('Callback URL:', 'http://localhost:8080/callback');
+    </script>
+</body>
+</html>

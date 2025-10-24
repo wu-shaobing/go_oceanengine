@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>巨量引擎 - 营销管理平台</title>
+    <link rel="stylesheet" href="ad-platform.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="top-header">
+        <div class="header-left">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#1E6EFF;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00D4FF;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#logoGradient)" d="M8 12 L20 8 L32 12 L28 24 L16 28 L8 24 Z"/>
+                </svg>
+                <span class="logo-text">巨量引擎</span>
+            </div>
+            
+            <!-- 巨量广告导航 -->
+            <nav class="main-nav" id="jl-ad-nav">
+                <a href="#" class="nav-item active" data-page="ad-overview">概览</a>
+                <a href="#" class="nav-item" data-page="ad-project">项目管理</a>
+                <a href="#" class="nav-item" data-page="ad-campaign">广告管理</a>
+                <a href="#" class="nav-item" data-page="ad-creative-manage">创意管理</a>
+                <a href="#" class="nav-item" data-page="ad-report">报表</a>
+                <a href="#" class="nav-item" data-page="ad-tools">工具</a>
+                <a href="#" class="nav-item" data-page="ad-account">账户</a>
+            </nav>
+
+            <!-- 巨量千川导航 -->
+            <nav class="main-nav" id="qianchuan-nav" style="display: none;">
+                <a href="#" class="nav-item active" data-page="qc-overview">概览</a>
+                <a href="#" class="nav-item" data-page="qc-plan">推广计划</a>
+                <a href="#" class="nav-item" data-page="qc-product-promo">商品推广</a>
+                <a href="#" class="nav-item" data-page="qc-live-promo">直播间推广</a>
+                <a href="#" class="nav-item" data-page="qc-report">报表</a>
+                <a href="#" class="nav-item" data-page="qc-material">素材</a>
+                <a href="#" class="nav-item" data-page="qc-account">账户</a>
+            </nav>
+
+            <!-- 抖+导航 -->
+            <nav class="main-nav" id="douplus-nav" style="display: none;">
+                <a href="#" class="nav-item active" data-page="dp-overview">概览</a>
+                <a href="#" class="nav-item" data-page="dp-video-promo">视频加热</a>
+                <a href="#" class="nav-item" data-page="dp-live-promo">直播加热</a>
+                <a href="#" class="nav-item" data-page="dp-order-list">订单列表</a>
+                <a href="#" class="nav-item" data-page="dp-data">数据中心</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="btn-alert">即将到期</button>
+            <button class="icon-btn">
+                <span>💬</span>
+                客服
+            </button>
+            <button class="icon-btn">
+                <span>🔔</span>
+                最新动态
+            </button>
+            <button class="icon-btn">
+                <span>⭐</span>
+            </button>
+            <div class="user-info">
+                <div class="avatar"></div>
+                <span>广州市好运快公司</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 产品线切换标签 -->
+    <div class="product-tabs">
+        <button class="product-tab active" data-product="jl-ad">巨量广告</button>
+        <button class="product-tab" data-product="qianchuan">巨量千川</button>
+        <button class="product-tab" data-product="douplus">抖+</button>
+    </div>
+
+    <!-- 主容器 -->
+    <div class="main-container">
+        <!-- 巨量广告 - 左侧边栏 -->
+        <aside class="sidebar" id="jl-ad-sidebar">
+            <div class="sidebar-section">
+                <div class="sidebar-header">
+                    <svg width="16" height="16" viewBox="0 0 16 16">
+                        <path fill="#1E6EFF" d="M4 6 L8 4 L12 6 L10 10 L6 12 L4 10 Z"/>
+                    </svg>
+                    <span>资产管理</span>
+                    <svg class="expand-icon" width="12" height="12" viewBox="0 0 12 12">
+                        <path d="M3 5 L6 8 L9 5" stroke="currentColor" fill="none" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <ul class="sidebar-menu">
+                    <li class="menu-item" data-page="ad-landing-page">落地页</li>
+                    <li class="menu-item" data-page="ad-creative">创意管理</li>
+                    <li class="menu-item" data-page="ad-targeting">定向包</li>
+                    <li class="menu-item" data-page="ad-audience">人群包</li>
+                    <li class="menu-item" data-page="ad-site">监测链接</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- 巨量千川 - 左侧边栏 -->
+        <aside class="sidebar" id="qianchuan-sidebar" style="display: none;">
+            <div class="sidebar-section">
+                <div class="sidebar-header">
+                    <svg width="16" height="16" viewBox="0 0 16 16">
+                        <rect x="4" y="4" width="8" height="8" stroke="#FF6B00" fill="none" stroke-width="1.5"/>
+                    </svg>
+                    <span>资产管理</span>
+                    <svg class="expand-icon" width="12" height="12" viewBox="0 0 12 12">
+                        <path d="M3 5 L6 8 L9 5" stroke="currentColor" fill="none" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <ul class="sidebar-menu">
+                    <li class="menu-item" data-page="qc-product">商品管理</li>
+                    <li class="menu-item" data-page="qc-live">直播间管理</li>
+                    <li class="menu-item" data-page="qc-aweme">抖音号管理</li>
+                    <li class="menu-item" data-page="qc-creative">创意素材</li>
+                    <li class="menu-item" data-page="qc-audience">人群包</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- 抖+ - 左侧边栏 -->
+        <aside class="sidebar" id="douplus-sidebar" style="display: none;">
+            <div class="sidebar-section">
+                <div class="sidebar-header">
+                    <svg width="16" height="16" viewBox="0 0 16 16">
+                        <circle cx="8" cy="8" r="6" stroke="#00D4FF" fill="none" stroke-width="1.5"/>
+                    </svg>
+                    <span>内容管理</span>
+                    <svg class="expand-icon" width="12" height="12" viewBox="0 0 12 12">
+                        <path d="M3 5 L6 8 L9 5" stroke="currentColor" fill="none" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <ul class="sidebar-menu">
+                    <li class="menu-item" data-page="dp-video">视频管理</li>
+                    <li class="menu-item" data-page="dp-live">直播管理</li>
+                    <li class="menu-item" data-page="dp-order">订单管理</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- 主内容区 -->
+        <main class="content-area">
+            <!-- 面包屑 -->
+            <div class="breadcrumb">
+                <span class="breadcrumb-item">巨量广告</span>
+                <span class="breadcrumb-separator">></span>
+                <span class="breadcrumb-item current" id="current-page-name">概览</span>
+            </div>
+
+            <!-- 帮助提示框 -->
+            <div class="help-notice">
+                <div class="help-content">
+                    <p>账户真实到期日不足，到期后账户将不能登录创建后台，为保证后台正常操作，建议尽快进行续费，如有问题可以联系客服咨询</p>
+                </div>
+                <button class="btn-know">我知道了</button>
+                <div class="help-footer">媒体账户</div>
+            </div>
+
+            <!-- ========== 巨量广告页面 ========== -->
+            
+            <!-- 巨量广告 - 概览页面 -->
+            <div id="ad-overview" class="page-content active">
+                <div class="page-header">
+                    <h2>数据概览</h2>
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="请输入广告主ID (advertiser_id)">
+                        </div>
+                        <div class="filter-item">
+                            <label>时间范围:</label>
+                            <input type="date" class="date-input" value="2025-10-16">
+                            <span>至</span>
+                            <input type="date" class="date-input" value="2025-10-23">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="stats-cards">
+                    <div class="stat-card blue">
+                        <div class="card-label">消耗 (stat_cost)</div>
+                        <div class="card-value">¥0.00</div>
+                        <div class="card-change">↑ 环比 --</div>
+                    </div>
+                    <div class="stat-card green">
+                        <div class="card-label">展示 (show_cnt)</div>
+                        <div class="card-value">0</div>
+                        <div class="card-change">↑ 环比 --</div>
+                    </div>
+                    <div class="stat-card orange">
+                        <div class="card-label">点击 (click_cnt)</div>
+                        <div class="card-value">0</div>
+                        <div class="card-change">↓ 环比 --</div>
+                    </div>
+                    <div class="stat-card purple">
+                        <div class="card-label">转化 (convert_cnt)</div>
+                        <div class="card-value">0</div>
+                        <div class="card-change">↑ 环比 --</div>
+                    </div>
+                    <div class="stat-card pink">
+                        <div class="card-label">转化成本 (conversion_cost)</div>
+                        <div class="card-value">¥0.00</div>
+                        <div class="card-change">-- 环比 --</div>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h3>数据趋势</h3>
+                    <div class="empty-state">
+                        <p>📊 暂无数据，请选择广告主ID并设置时间范围查询</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 巨量广告 - 项目管理 -->
+            <div id="ad-project" class="page-content">
+                <div class="page-header">
+                    <h2>项目管理 (Project)</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数 advertiser_id" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>项目名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入项目名称">
+                        </div>
+                        <div class="filter-item">
+                            <label>项目状态:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>启用</option>
+                                <option>暂停</option>
+                                <option>删除</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 新建项目</button>
+                    <button class="btn-secondary">批量操作</button>
+                    <button class="btn-secondary">导出数据</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>项目ID (project_id)</th>
+                                <th>项目名称 (name)</th>
+                                <th>状态 (status)</th>
+                                <th>预算 (budget)</th>
+                                <th>消耗</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    <div class="empty-icon">📄</div>
+                                    <div>请输入广告主ID查询项目列表</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量广告 - 广告管理 -->
+            <div id="ad-campaign" class="page-content">
+                <div class="page-header">
+                    <h2>广告管理 (Ad)</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数 advertiser_id" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>广告名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入广告名称">
+                        </div>
+                        <div class="filter-item">
+                            <label>投放状态:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>投放中</option>
+                                <option>暂停</option>
+                                <option>已结束</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 新建广告</button>
+                    <button class="btn-secondary">批量启用/暂停</button>
+                    <button class="btn-secondary">导出报表</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>广告ID (ad_id)</th>
+                                <th>广告名称 (name)</th>
+                                <th>投放状态</th>
+                                <th>预算</th>
+                                <th>消耗</th>
+                                <th>点击率</th>
+                                <th>转化数</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="9" class="empty-state">
+                                    <div class="empty-icon">📄</div>
+                                    <div>请输入广告主ID查询广告列表</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量广告 - 创意管理 -->
+            <div id="ad-creative-manage" class="page-content">
+                <div class="page-header">
+                    <h2>创意管理 (Creative)</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数 advertiser_id" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>创意ID:</label>
+                            <input type="text" class="text-input" placeholder="creative_id (选填)">
+                        </div>
+                        <div class="filter-item">
+                            <label>审核状态:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>审核中</option>
+                                <option>审核通过</option>
+                                <option>审核拒绝</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 新建创意</button>
+                    <button class="btn-secondary">批量操作</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>创意ID (creative_id)</th>
+                                <th>创意名称</th>
+                                <th>创意类型</th>
+                                <th>审核状态</th>
+                                <th>消耗</th>
+                                <th>展示</th>
+                                <th>点击率</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="9" class="empty-state">
+                                    <div class="empty-icon">📄</div>
+                                    <div>请输入广告主ID查询创意列表</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量广告 - 工具 -->
+            <div id="ad-tools" class="page-content">
+                <div class="page-header">
+                    <h2>营销工具</h2>
+                </div>
+                
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <div class="tool-icon">📊</div>
+                        <h3>数据分析工具</h3>
+                        <p style="text-align: center; color: #999; font-size: 13px;">实时数据分析与报表生成</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">🎯</div>
+                        <h3>定向工具</h3>
+                        <p style="text-align: center; color: #999; font-size: 13px;">智能定向人群分析</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">📦</div>
+                        <h3>创意工具</h3>
+                        <p style="text-align: center; color: #999; font-size: 13px;">批量创愊生成与管理</p>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">📈</div>
+                        <h3>投放优化工具</h3>
+                        <p style="text-align: center; color: #999; font-size: 13px;">智能出价与预算分配</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 巨量广告 - 账户 -->
+            <div id="ad-account" class="page-content">
+                <div class="page-header">
+                    <h2>账户管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>账户名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入账户名称">
+                        </div>
+                        <div class="filter-item">
+                            <label>账户状态:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>正常</option>
+                                <option>冻结</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 添加账户</button>
+                    <button class="btn-secondary">充值</button>
+                    <button class="btn-secondary">账户设置</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>账户ID</th>
+                                <th>账户名称</th>
+                                <th>账户余额</th>
+                                <th>消耗总额</th>
+                                <th>账户状态</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    <div class="empty-icon">💼</div>
+                                    <div>暂无账户数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量广告 - 落地页 -->
+            <div id="ad-landing-page" class="page-content">
+                <div class="page-header">
+                    <h2>落地页管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数 advertiser_id" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>落地页名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入落地页名称">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 新建落地页</button>
+                    <button class="btn-secondary">批量操作</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>落地页ID</th>
+                                <th>落地页名称</th>
+                                <th>落地页链接</th>
+                                <th>审核状态</th>
+                                <th>使用状态</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    <div class="empty-icon">📝</div>
+                                    <div>请输入广告主ID查询落地页列表</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量广告 - 创意管理 (侧边栏) -->
+            <div id="ad-creative" class="page-content">
+                <div class="page-header">
+                    <h2>创意资产管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数 advertiser_id" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>创意类型:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>图片</option>
+                                <option>视频</option>
+                                <option>图文</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 上传创意</button>
+                    <button class="btn-secondary">批量操作</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>创意素材</th>
+                                <th>创意类型</th>
+                                <th>审核状态</th>
+                                <th>使用次数</th>
+                                <th>上传时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" class="empty-state">
+                                    <div class="empty-icon">🎨</div>
+                                    <div>请输入广告主ID查询创意列表</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量广告 - 定向包 -->
+            <div id="ad-targeting" class="page-content">
+                <div class="page-header">
+                    <h2>定向包管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数 advertiser_id" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>定向包名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入定向包名称">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 新建定向包</button>
+                    <button class="btn-secondary">批量操作</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>定向包ID</th>
+                                <th>定向包名称</th>
+                                <th>定向类型</th>
+                                <th>使用次数</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" class="empty-state">
+                                    <div class="empty-icon">🎯</div>
+                                    <div>请输入广告主ID查询定向包列表</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量广告 - 人群包 -->
+            <div id="ad-audience" class="page-content">
+                <div class="page-header">
+                    <h2>人群包管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数 advertiser_id" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>人群包名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入人群包名称">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 新建人群包</button>
+                    <button class="btn-secondary">上传人群数据</button>
+                    <button class="btn-secondary">批量操作</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>人群包ID</th>
+                                <th>人群包名称</th>
+                                <th>人群数量</th>
+                                <th>覆盖人数</th>
+                                <th>状态</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    <div class="empty-icon">👥</div>
+                                    <div>请输入广告主ID查询人群包列表</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量广告 - 监测链接 -->
+            <div id="ad-site" class="page-content">
+                <div class="page-header">
+                    <h2>监测链接管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数 advertiser_id" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>监测名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入监测名称">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 新建监测链接</button>
+                    <button class="btn-secondary">批量操作</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>监测链接ID</th>
+                                <th>监测名称</th>
+                                <th>监测链接</th>
+                                <th>监测类型</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" class="empty-state">
+                                    <div class="empty-icon">🔗</div>
+                                    <div>请输入广告主ID查询监测链接列表</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量广告 - 报表 -->
+            <div id="ad-report" class="page-content">
+                <div class="page-header">
+                    <h2>数据报表 (Report API)</h2>
+                </div>
+
+                <div class="page-tabs">
+                    <button class="tab-btn active">广告报表</button>
+                    <button class="tab-btn">创意报表</button>
+                    <button class="tab-btn">账户报表</button>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数 advertiser_id" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>开始日期 (start_date):</label>
+                            <input type="date" class="date-input" value="2025-10-16">
+                        </div>
+                        <div class="filter-item">
+                            <label>结束日期 (end_date):</label>
+                            <input type="date" class="date-input" value="2025-10-23">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>广告ID</th>
+                                <th>消耗 (stat_cost)</th>
+                                <th>展示 (show_cnt)</th>
+                                <th>点击 (click_cnt)</th>
+                                <th>点击率 (ctr)</th>
+                                <th>转化 (convert_cnt)</th>
+                                <th>转化成本 (conversion_cost)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    <div class="empty-icon">📊</div>
+                                    <div>请设置筛选条件查询报表数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ========== 巨量千川页面 ========== -->
+            
+            <!-- 巨量千川 - 概览页面 -->
+            <div id="qc-overview" class="page-content">
+                <div class="page-header">
+                    <h2>千川概览</h2>
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="请输入广告主ID">
+                        </div>
+                        <div class="filter-item">
+                            <label>时间范围:</label>
+                            <input type="date" class="date-input" value="2025-10-16">
+                            <span>至</span>
+                            <input type="date" class="date-input" value="2025-10-23">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="stats-cards">
+                    <div class="stat-card blue">
+                        <div class="card-label">消耗 (元)</div>
+                        <div class="card-value">¥0.00</div>
+                        <div class="card-change">环比 --</div>
+                    </div>
+                    <div class="stat-card green">
+                        <div class="card-label">GMV</div>
+                        <div class="card-value">¥0.00</div>
+                        <div class="card-change">环比 --</div>
+                    </div>
+                    <div class="stat-card orange">
+                        <div class="card-label">支付ROI</div>
+                        <div class="card-value">0.00</div>
+                        <div class="card-change">环比 --</div>
+                    </div>
+                    <div class="stat-card purple">
+                        <div class="card-label">成交订单数</div>
+                        <div class="card-value">0</div>
+                        <div class="card-change">环比 --</div>
+                    </div>
+                    <div class="stat-card pink">
+                        <div class="card-label">成交金额</div>
+                        <div class="card-value">¥0.00</div>
+                        <div class="card-change">环比 --</div>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h3>电商数据趋势</h3>
+                    <div class="empty-state">
+                        <p>📊 暂无数据，请选择广告主ID并设置时间范围查询</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 巨量千川 - 推广计划 -->
+            <div id="qc-plan" class="page-content">
+                <div class="page-header">
+                    <h2>推广计划</h2>
+                </div>
+
+                <div class="page-tabs">
+                    <button class="tab-btn active">直播间</button>
+                    <button class="tab-btn">商品</button>
+                    <button class="tab-btn">短视频</button>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>计划名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入计划名称">
+                        </div>
+                        <div class="filter-item">
+                            <label>投放状态:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>投放中</option>
+                                <option>暂停</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 新建计划</button>
+                    <button class="btn-secondary">批量操作</button>
+                    <button class="btn-secondary">导出数据</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>计划ID</th>
+                                <th>计划名称</th>
+                                <th>投放类型</th>
+                                <th>预算</th>
+                                <th>消耗</th>
+                                <th>ROI</th>
+                                <th>成交订单</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="9" class="empty-state">
+                                    <div class="empty-icon">📄</div>
+                                    <div>暂无数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量千川 - 商品推广 -->
+            <div id="qc-product-promo" class="page-content">
+                <div class="page-header">
+                    <h2>商品推广</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>商品名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入商品名称">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 添加商品</button>
+                    <button class="btn-secondary">批量操作</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>商品ID</th>
+                                <th>商品名称</th>
+                                <th>商品价格</th>
+                                <th>消耗</th>
+                                <th>GMV</th>
+                                <th>ROI</th>
+                                <th>成交订单</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="9" class="empty-state">
+                                    <div class="empty-icon">🛍️</div>
+                                    <div>暂无商品数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量千川 - 直播间推广 -->
+            <div id="qc-live-promo" class="page-content">
+                <div class="page-header">
+                    <h2>直播间推广</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>直播间名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入直播间名称">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 添加直播间</button>
+                    <button class="btn-secondary">批量操作</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>直播间ID</th>
+                                <th>直播间名称</th>
+                                <th>直播状态</th>
+                                <th>消耗</th>
+                                <th>观看人数</th>
+                                <th>成交金额</th>
+                                <th>ROI</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="9" class="empty-state">
+                                    <div class="empty-icon">📹</div>
+                                    <div>暂无直播间数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量千川 - 素材 -->
+            <div id="qc-material" class="page-content">
+                <div class="page-header">
+                    <h2>素材管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>素材类型:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>视频</option>
+                                <option>图片</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 上传素材</button>
+                    <button class="btn-secondary">批量操作</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>素材预览</th>
+                                <th>素材类型</th>
+                                <th>使用次数</th>
+                                <th>消耗</th>
+                                <th>ROI</th>
+                                <th>上传时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    <div class="empty-icon">🎨</div>
+                                    <div>暂无素材数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量千川 - 账户 -->
+            <div id="qc-account" class="page-content">
+                <div class="page-header">
+                    <h2>千川账户管理</h2>
+                </div>
+
+                <div class="stats-cards">
+                    <div class="stat-card blue">
+                        <div class="card-label">账户余额</div>
+                        <div class="card-value">￥0.00</div>
+                    </div>
+                    <div class="stat-card green">
+                        <div class="card-label">今日消耗</div>
+                        <div class="card-value">￥0.00</div>
+                    </div>
+                    <div class="stat-card orange">
+                        <div class="card-label">本月消耗</div>
+                        <div class="card-value">￥0.00</div>
+                    </div>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>时间范围:</label>
+                            <input type="date" class="date-input" value="2025-10-16">
+                            <span>至</span>
+                            <input type="date" class="date-input" value="2025-10-23">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">充值</button>
+                    <button class="btn-secondary">消耗明细</button>
+                    <button class="btn-secondary">账户设置</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>消耗金额</th>
+                                <th>GMV</th>
+                                <th>ROI</th>
+                                <th>成交订单</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="5" class="empty-state">
+                                    <div class="empty-icon">📊</div>
+                                    <div>暂无消耗数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量千川 - 商品管理 -->
+            <div id="qc-product" class="page-content">
+                <div class="page-header">
+                    <h2>商品管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>商品名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入商品名称">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 添加商品</button>
+                    <button class="btn-secondary">同步商品</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>商品图片</th>
+                                <th>商品ID</th>
+                                <th>商品名称</th>
+                                <th>商品价格</th>
+                                <th>库存</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    <div class="empty-icon">🛍️</div>
+                                    <div>暂无商品数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量千川 - 直播间管理 -->
+            <div id="qc-live" class="page-content">
+                <div class="page-header">
+                    <h2>直播间管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>直播间名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入直播间名称">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 添加直播间</button>
+                    <button class="btn-secondary">同步直播间</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>直播间ID</th>
+                                <th>直播间名称</th>
+                                <th>直播状态</th>
+                                <th>关联计划数</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" class="empty-state">
+                                    <div class="empty-icon">📹</div>
+                                    <div>暂无直播间数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量千川 - 抖音号管理 -->
+            <div id="qc-aweme" class="page-content">
+                <div class="page-header">
+                    <h2>抖音号管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>抖音号名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入抖音号名称">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 添加抖音号</button>
+                    <button class="btn-secondary">同步抖音号</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>抖音号ID</th>
+                                <th>抖音号名称</th>
+                                <th>粉丝数</th>
+                                <th>关联计划数</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" class="empty-state">
+                                    <div class="empty-icon">🎵</div>
+                                    <div>暂无抖音号数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量千川 - 创意素材 -->
+            <div id="qc-creative" class="page-content">
+                <div class="page-header">
+                    <h2>创意素材管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>素材类型:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>视频</option>
+                                <option>图片</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 上传素材</button>
+                    <button class="btn-secondary">批量操作</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>素材预览</th>
+                                <th>素材类型</th>
+                                <th>审核状态</th>
+                                <th>使用次数</th>
+                                <th>上传时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" class="empty-state">
+                                    <div class="empty-icon">🎨</div>
+                                    <div>暂无素材数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量千川 - 人群包 -->
+            <div id="qc-audience" class="page-content">
+                <div class="page-header">
+                    <h2>人群包管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>人群包名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入人群包名称">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 新建人群包</button>
+                    <button class="btn-secondary">上传人群</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>人群包ID</th>
+                                <th>人群包名称</th>
+                                <th>人群数量</th>
+                                <th>状态</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="7" class="empty-state">
+                                    <div class="empty-icon">👥</div>
+                                    <div>暂无人群包数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 巨量千川 - 报表 -->
+            <div id="qc-report" class="page-content">
+                <div class="page-header">
+                    <h2>千川报表</h2>
+                </div>
+
+                <div class="page-tabs">
+                    <button class="tab-btn active">计划报表</button>
+                    <button class="tab-btn">商品报表</button>
+                    <button class="tab-btn">直播间报表</button>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>广告主ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>开始日期:</label>
+                            <input type="date" class="date-input" value="2025-10-16">
+                        </div>
+                        <div class="filter-item">
+                            <label>结束日期:</label>
+                            <input type="date" class="date-input" value="2025-10-23">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>计划ID</th>
+                                <th>消耗</th>
+                                <th>展示</th>
+                                <th>点击</th>
+                                <th>ROI</th>
+                                <th>成交订单</th>
+                                <th>成交金额</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    <div class="empty-icon">📊</div>
+                                    <div>请设置筛选条件查询报表数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ========== 抖+页面 ========== -->
+            
+            <!-- 抖+ - 概览页面 -->
+            <div id="dp-overview" class="page-content">
+                <div class="page-header">
+                    <h2>抖+概览</h2>
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>抖音号ID:</label>
+                            <input type="text" class="text-input" placeholder="请输入抖音号ID">
+                        </div>
+                        <div class="filter-item">
+                            <label>时间范围:</label>
+                            <input type="date" class="date-input" value="2025-10-16">
+                            <span>至</span>
+                            <input type="date" class="date-input" value="2025-10-23">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="stats-cards">
+                    <div class="stat-card blue">
+                        <div class="card-label">投放金额</div>
+                        <div class="card-value">¥0.00</div>
+                        <div class="card-change">环比 --</div>
+                    </div>
+                    <div class="stat-card green">
+                        <div class="card-label">播放量</div>
+                        <div class="card-value">0</div>
+                        <div class="card-change">环比 --</div>
+                    </div>
+                    <div class="stat-card orange">
+                        <div class="card-label">点赞数</div>
+                        <div class="card-value">0</div>
+                        <div class="card-change">环比 --</div>
+                    </div>
+                    <div class="stat-card purple">
+                        <div class="card-label">评论数</div>
+                        <div class="card-value">0</div>
+                        <div class="card-change">环比 --</div>
+                    </div>
+                    <div class="stat-card pink">
+                        <div class="card-label">分享数</div>
+                        <div class="card-value">0</div>
+                        <div class="card-change">环比 --</div>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h3>加热效果趋势</h3>
+                    <div class="empty-state">
+                        <p>📊 暂无数据，请选择抖音号并设置时间范围查询</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 抖+ - 视频加热 -->
+            <div id="dp-video-promo" class="page-content">
+                <div class="page-header">
+                    <h2>视频加热</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>抖音号ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>视频标题:</label>
+                            <input type="text" class="text-input" placeholder="请输入视频标题">
+                        </div>
+                        <div class="filter-item">
+                            <label>投放状态:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>投放中</option>
+                                <option>已结束</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 新建视频加热</button>
+                    <button class="btn-secondary">批量操作</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>订单ID</th>
+                                <th>视频封面</th>
+                                <th>视频标题</th>
+                                <th>投放金额</th>
+                                <th>播放量</th>
+                                <th>点赞数</th>
+                                <th>评论数</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="10" class="empty-state">
+                                    <div class="empty-icon">🎬</div>
+                                    <div>暂无视频加热订单</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 抖+ - 直播加热 -->
+            <div id="dp-live-promo" class="page-content">
+                <div class="page-header">
+                    <h2>直播加热</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>抖音号ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>直播间名称:</label>
+                            <input type="text" class="text-input" placeholder="请输入直播间名称">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-primary">+ 新建直播加热</button>
+                    <button class="btn-secondary">批量操作</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>订单ID</th>
+                                <th>直播间名称</th>
+                                <th>投放金额</th>
+                                <th>观看人数</th>
+                                <th>互动数</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    <div class="empty-icon">📹</div>
+                                    <div>暂无直播加热订单</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 抖+ - 订单列表 -->
+            <div id="dp-order-list" class="page-content">
+                <div class="page-header">
+                    <h2>订单列表</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>抖音号ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>订单类型:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>视频加热</option>
+                                <option>直播加热</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label>订单状态:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>投放中</option>
+                                <option>已完成</option>
+                                <option>已取消</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="action-row">
+                    <button class="btn-secondary">导出订单</button>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>订单ID</th>
+                                <th>订单类型</th>
+                                <th>内容标题</th>
+                                <th>投放金额</th>
+                                <th>消耗金额</th>
+                                <th>订单状态</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    <div class="empty-icon">📋</div>
+                                    <div>暂无订单数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 抖+ - 视频管理 -->
+            <div id="dp-video" class="page-content">
+                <div class="page-header">
+                    <h2>视频管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>抖音号ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>视频标题:</label>
+                            <input type="text" class="text-input" placeholder="请输入视频标题">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>视频封面</th>
+                                <th>视频标题</th>
+                                <th>播放量</th>
+                                <th>点赞数</th>
+                                <th>评论数</th>
+                                <th>分享数</th>
+                                <th>发布时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="9" class="empty-state">
+                                    <div class="empty-icon">🎬</div>
+                                    <div>暂无视频数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 抖+ - 直播管理 -->
+            <div id="dp-live" class="page-content">
+                <div class="page-header">
+                    <h2>直播管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>抖音号ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>直播状态:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>直播中</option>
+                                <option>已结束</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>直播间名称</th>
+                                <th>直播状态</th>
+                                <th>观看人数</th>
+                                <th>点赞数</th>
+                                <th>评论数</th>
+                                <th>开播时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    <div class="empty-icon">📹</div>
+                                    <div>暂无直播数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 抖+ - 订单管理 -->
+            <div id="dp-order" class="page-content">
+                <div class="page-header">
+                    <h2>订单管理</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>抖音号ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>订单类型:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>视频加热</option>
+                                <option>直播加热</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label>订单状态:</label>
+                            <select class="select-input">
+                                <option>全部</option>
+                                <option>投放中</option>
+                                <option>已完成</option>
+                            </select>
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>订单ID</th>
+                                <th>订单类型</th>
+                                <th>内容标题</th>
+                                <th>投放金额</th>
+                                <th>消耗金额</th>
+                                <th>订单状态</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    <div class="empty-icon">📋</div>
+                                    <div>暂无订单数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 抖+ - 数据中心 -->
+            <div id="dp-data" class="page-content">
+                <div class="page-header">
+                    <h2>数据中心</h2>
+                </div>
+
+                <div class="page-filters">
+                    <div class="filter-row">
+                        <div class="filter-item">
+                            <label>抖音号ID:</label>
+                            <input type="text" class="text-input" placeholder="必填参数" required>
+                        </div>
+                        <div class="filter-item">
+                            <label>数据类型:</label>
+                            <select class="select-input">
+                                <option>播放数据</option>
+                                <option>互动数据</option>
+                                <option>粉丝数据</option>
+                            </select>
+                        </div>
+                        <div class="filter-item">
+                            <label>时间范围:</label>
+                            <input type="date" class="date-input" value="2025-10-16">
+                            <span>至</span>
+                            <input type="date" class="date-input" value="2025-10-23">
+                        </div>
+                        <button class="btn-primary">查询</button>
+                    </div>
+                </div>
+
+                <div class="chart-section">
+                    <h3>数据趋势图</h3>
+                    <div class="empty-state">
+                        <p>📊 暂无数据，请设置筛选条件查询</p>
+                    </div>
+                </div>
+
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>日期</th>
+                                <th>播放量</th>
+                                <th>点赞数</th>
+                                <th>评论数</th>
+                                <th>分享数</th>
+                                <th>新增粉丝</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" class="empty-state">
+                                    <div class="empty-icon">📊</div>
+                                    <div>暂无数据</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="ad-platform.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "tasks": [
+    {
+      "name": "harden-logging",
+      "description": "Redact sensitive headers and avoid consuming bodies in middleware/log.go; enable truncated body logging",
+      "agents": ["code-reviewer", "golang-pro"],
+      "paths": ["middleware/log.go"]
+    },
+    {
+      "name": "ci-setup",
+      "description": "Add GitHub Actions workflow for build/test/lint and golangci-lint config",
+      "agents": ["ai-engineer"],
+      "paths": [".github/workflows/go.yml", ".golangci.yml"]
+    },
+    {
+      "name": "http-timeout",
+      "description": "Default HTTP client timeout to 30s in api/client.go NewAPIClient",
+      "agents": ["golang-pro"],
+      "paths": ["api/client.go"]
+    },
+    {
+      "name": "readme-fix",
+      "description": "Fix installation and import examples in README",
+      "agents": ["docs-architect"],
+      "paths": ["README.md"]
+    }
+  ]
+}

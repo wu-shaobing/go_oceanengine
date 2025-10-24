@@ -1,0 +1,15 @@
+# 构建产物
+dist/
+build/
+*.min.js
+
+# 依赖
+node_modules/
+
+# 临时脚本文件
+scripts/*.cjs
+
+# 配置文件
+*.config.js
+*.config.ts
+vite.config.ts

@@ -1,0 +1,25 @@
+run:
+  timeout: 5m
+  tests: false
+  skip-dirs:
+    - api
+    - models
+    - examples
+  skip-files:
+    - ".*\.gen\.go"
+    - ".*_example\.go"
+
+linters:
+  disable-all: true
+  enable:
+    - govet
+    - gofmt
+    - goimports
+    - revive
+    - errcheck
+
+linters-settings:
+  revive:
+    rules:
+      - name: blank-imports
+      - name: exportless

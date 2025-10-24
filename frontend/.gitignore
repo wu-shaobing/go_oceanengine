@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+vite.svg
+coverage
+.dist
+/dist
+.env*
+
+# 旧文件备份
+.archive/

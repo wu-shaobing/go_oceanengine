@@ -1,0 +1,1002 @@
+{
+  "crawlTime": "2025-10-22T08:18:21.462Z",
+  "pages": [
+    {
+      "name": "文案库",
+      "title": "标题库-千川-文案库-通用资产-资产",
+      "url": "https://cl.mobgi.com/property/common/qianchuan/title/library",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "请选择分类",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "标题",
+        "标题类型",
+        "分类",
+        "消耗",
+        "点击率",
+        "成交订单数",
+        "成交订单金额",
+        "直接支付ROI",
+        "7日总支付ROI",
+        "成交智能优惠券金额",
+        "创建时间",
+        "创建人",
+        "关联计划数"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "新建标题",
+        "批量操作",
+        "导出数据",
+        "取 消",
+        "确 定",
+        "取消",
+        "确定",
+        "取 消",
+        "确 定"
+      ],
+      "cards": []
+    },
+    {
+      "name": "资产分类",
+      "title": "巨量千川-资产分类-通用资产-资产",
+      "url": "https://cl.mobgi.com/property/common/qianchuan/category",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "请选择应用范围",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "分类名称",
+        "应用范围",
+        "创建时间",
+        "操作"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "添加资产分类",
+        "批量操作",
+        "取消",
+        "确定",
+        "取消",
+        "确定",
+        "取 消",
+        "确 定"
+      ],
+      "cards": []
+    },
+    {
+      "name": "商品链接",
+      "title": "商品链接-巨量广告-资产",
+      "url": "https://cl.mobgi.com/property/toutiao/shop-link",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "商品链接组名称",
+        "商品ID",
+        "电商平台",
+        "落地页链接",
+        "Deeplink直达链接",
+        "有效触点链接",
+        "展示检测链接",
+        "媒体账户",
+        "创建人",
+        "创建时间",
+        "关联计划",
+        "操作",
+        "商品链接组名称",
+        "商品ID",
+        "电商平台",
+        "落地页链接",
+        "Deeplink直达链接",
+        "有效触点链接",
+        "展示检测链接",
+        "媒体账户",
+        "创建人",
+        "创建时间",
+        "关联计划",
+        "操作",
+        "商品链接组名称",
+        "商品ID",
+        "电商平台",
+        "落地页链接",
+        "Deeplink直达链接",
+        "有效触点链接",
+        "展示检测链接",
+        "媒体账户",
+        "创建人",
+        "创建时间",
+        "关联计划",
+        "操作"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "清空",
+        "搜索",
+        "新增商品链接组",
+        "批量导入商品链接组",
+        "同步商品链接",
+        "删除",
+        "取 消",
+        "保 存",
+        "取 消",
+        "确 定",
+        "取消",
+        "开始同步",
+        "取 消",
+        "确 定"
+      ],
+      "cards": []
+    },
+    {
+      "name": "落地页",
+      "title": "第三方落地页-巨量广告-资产",
+      "url": "https://cl.mobgi.com/property/toutiao/landingpage/third",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "所有账户",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "不限",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "批量操作",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "落地页名称",
+        "落地页备注",
+        "使用状态",
+        "操作",
+        "ID",
+        "产品",
+        "落地页链接",
+        "有效触点链接",
+        "Deeplink直达链接",
+        "Ulink直达链接",
+        "字节小程序/小游戏APPID",
+        "字节小程序/小游戏链接",
+        "字节小程序/小游戏启动页面",
+        "字节小程序/小游戏启动参数",
+        "媒体账户",
+        "创建人员",
+        "创建时间",
+        "关联广告数"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "清空",
+        "搜索",
+        "设置",
+        "新建落地页",
+        "批量导入落地页",
+        "同步落地页",
+        "取消",
+        "确 定",
+        "取 消",
+        "确 定",
+        "取消",
+        "确定",
+        "取 消",
+        "确 定",
+        "取消",
+        "开始同步"
+      ],
+      "cards": []
+    },
+    {
+      "name": "直达链接",
+      "title": "直达链接-巨量广告-资产",
+      "url": "https://cl.mobgi.com/property/toutiao/openurl",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "直达链接名称",
+        "使用状态",
+        "操作",
+        "ID",
+        "Deeplink直达链接",
+        "Ulink直达链接",
+        "媒体账户",
+        "优化师",
+        "创建时间",
+        "关联计划",
+        "直达链接名称",
+        "使用状态",
+        "操作",
+        "ID",
+        "Deeplink直达链接",
+        "Ulink直达链接",
+        "媒体账户",
+        "优化师",
+        "创建时间",
+        "关联计划"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "清空",
+        "搜索",
+        "新增直达链接",
+        "导入直达链接",
+        "修改创量项目",
+        "导出数据",
+        "取 消",
+        "保 存",
+        "取 消",
+        "确 定",
+        "取 消",
+        "确 定",
+        "取 消",
+        "确 定"
+      ],
+      "cards": []
+    },
+    {
+      "name": "监测活动",
+      "title": "监测活动-巨量广告-资产",
+      "url": "https://cl.mobgi.com/property/toutiao/activity/index",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "所有产品",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "批量操作",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "监测活动名",
+        "使用状态",
+        "产品",
+        "媒体账户",
+        "创建人员",
+        "创建时间",
+        "关联计划",
+        "操作",
+        "监测活动名",
+        "使用状态",
+        "产品",
+        "媒体账户",
+        "创建人员",
+        "创建时间",
+        "关联计划",
+        "操作",
+        "监测活动名",
+        "使用状态",
+        "产品",
+        "媒体账户",
+        "创建人员",
+        "创建时间",
+        "关联计划",
+        "操作"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "清空",
+        "搜索",
+        "设置",
+        "导入监测活动",
+        "新建监测活动",
+        "取消",
+        "取消",
+        "确 定",
+        "取消",
+        "确 定",
+        "取消",
+        "确 定",
+        "取消",
+        "保存",
+        "取消",
+        "确定"
+      ],
+      "cards": []
+    },
+    {
+      "name": "事件管理",
+      "title": "事件管理-巨量广告-资产",
+      "url": "https://cl.mobgi.com/property/toutiao/eventmanagement/index",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "事件名称",
+        "优化目标",
+        "深度优化目标",
+        "价值类型",
+        "事件回传方式",
+        "媒体账户"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "同步事件管理",
+        "取 消",
+        "确 定"
+      ],
+      "cards": []
+    },
+    {
+      "name": "定向包",
+      "title": "定向包-巨量广告-资产",
+      "url": "https://cl.mobgi.com/property/toutiao/audience",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "批量操作",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "任务名称",
+        "任务状态",
+        "定向包名称",
+        "操作",
+        "定向包ID",
+        "定向描述",
+        "定向包类型",
+        "投放范围",
+        "创量项目",
+        "主体",
+        "创建人员",
+        "数据不包含自动投放项目关联项目数",
+        "创建时间",
+        "定向包名称",
+        "操作",
+        "定向包ID",
+        "定向描述",
+        "定向包类型",
+        "投放范围",
+        "创量项目",
+        "主体",
+        "创建人员",
+        "数据不包含自动投放项目关联项目数",
+        "创建时间"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "清空",
+        "搜索",
+        "新建创量定向包",
+        "获取巨量定向",
+        "取 消",
+        "确 定",
+        "取 消",
+        "确 定",
+        "不 需 要",
+        "需 要",
+        "取 消",
+        "确 定",
+        "取 消",
+        "确 定",
+        "取 消",
+        "确 定"
+      ],
+      "cards": []
+    },
+    {
+      "name": "自定义人群包",
+      "title": "头条DMP-巨量广告-资产",
+      "url": "https://cl.mobgi.com/property/toutiao/dmp",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择人群类型",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "批量操作",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "名称",
+        "ID",
+        "操作",
+        "人群分组",
+        "上传人数",
+        "覆盖人群",
+        "投放状态",
+        "人群包状态",
+        "推送状态",
+        "名称",
+        "ID",
+        "操作",
+        "人群分组",
+        "上传人数",
+        "覆盖人群",
+        "投放状态",
+        "人群包状态",
+        "推送状态"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "清空",
+        "搜索",
+        "同步巨量广告人群包",
+        "取 消",
+        "确 定",
+        "确 定",
+        "取 消",
+        "确 定",
+        "取 消",
+        "确 定"
+      ],
+      "cards": []
+    },
+    {
+      "name": "创意组件",
+      "title": "创意组件-巨量广告-资产",
+      "url": "https://cl.mobgi.com/property/toutiao/creativemodule",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择状态",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择组件类型",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "组件名称",
+        "组件ID",
+        "操作",
+        "组件类型",
+        "审核状态",
+        "账户"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "清空",
+        "搜索",
+        "新建创意组件",
+        "同步创意组件",
+        "取消",
+        "提交",
+        "取 消",
+        "确 定"
+      ],
+      "cards": []
+    },
+    {
+      "name": "原生锚点模板",
+      "title": "原生锚点模板-巨量广告-资产",
+      "url": "https://cl.mobgi.com/property/toutiao/anchor-template",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "请选择锚点类型",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "模板名称",
+        "锚点类型",
+        "创建人",
+        "创建时间",
+        "操作"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "清空",
+        "搜索",
+        "新建原生锚点",
+        "取 消",
+        "确 定",
+        "取消",
+        "提交",
+        "取 消",
+        "裁 剪",
+        "取 消",
+        "确 定",
+        "取 消",
+        "裁 剪",
+        "取消",
+        "提交",
+        "取 消"
+      ],
+      "cards": []
+    },
+    {
+      "name": "评论管理",
+      "title": "评论管理-巨量广告-资产",
+      "url": "https://cl.mobgi.com/property/toutiao/comments",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "不限",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "开始日期",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "结束日期",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "不限",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "不限",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "不限",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "不限",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "评论内容",
+        "媒体账户",
+        "评论层级",
+        "隐藏状态",
+        "评论用户",
+        "评论时间",
+        "评论舆情状态",
+        "相关回复数",
+        "点赞数",
+        "视频标题",
+        "评论类型",
+        "评论来源广告",
+        "操作",
+        "评论内容",
+        "媒体账户",
+        "评论层级",
+        "隐藏状态",
+        "评论用户",
+        "评论时间",
+        "评论舆情状态",
+        "相关回复数",
+        "点赞数",
+        "视频标题",
+        "评论类型",
+        "评论来源广告",
+        "操作",
+        "评论内容",
+        "媒体账户",
+        "评论层级",
+        "隐藏状态",
+        "评论用户",
+        "评论时间",
+        "评论舆情状态",
+        "相关回复数",
+        "点赞数",
+        "视频标题",
+        "评论类型",
+        "评论来源广告",
+        "操作"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "清空",
+        "搜索",
+        "同步数据",
+        "批量操作",
+        "关闭提示（5s）",
+        "取 消",
+        "确 定"
+      ],
+      "cards": []
+    },
+    {
+      "name": "定向包",
+      "title": "定向包-巨量千川-资产",
+      "url": "https://cl.mobgi.com/property/qianchuan/audience",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "请选择分类",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "全部",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "批量操作",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "定向包名称",
+        "定向包来源",
+        "账户名称",
+        "推广方式",
+        "资产分类",
+        "创建人",
+        "关联计划数",
+        "操作"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "同步千川定向包",
+        "新建定向包",
+        "取 消",
+        "确 定",
+        "取消",
+        "确定",
+        "取 消",
+        "确 定",
+        "取 消",
+        "确 定"
+      ],
+      "cards": []
+    },
+    {
+      "name": "标签包",
+      "title": "标题包-巨量千川-资产-标签包管理",
+      "url": "https://cl.mobgi.com/property/qianchuan/keywords/keywords-package-manage",
+      "sidebar": [],
+      "tabs": [],
+      "filters": [
+        {
+          "type": "input",
+          "placeholder": "请选择分类",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请输入关键词",
+          "name": ""
+        },
+        {
+          "type": "input",
+          "placeholder": "请选择",
+          "name": ""
+        }
+      ],
+      "tableHeaders": [
+        "标签包名称",
+        "分类",
+        "关联计划数",
+        "操作"
+      ],
+      "buttons": [
+        "最新功能",
+        "切换版本",
+        "取 消",
+        "确 定",
+        "新建标签包",
+        "批量操作",
+        "取 消",
+        "确 定",
+        "取消",
+        "确定",
+        "取 消",
+        "确 定"
+      ],
+      "cards": []
+    }
+  ]
+}

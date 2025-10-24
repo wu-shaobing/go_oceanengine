@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI智能投放 - 选择应用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff6b6b 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .app-card.qianchuan {
+            border-top: 4px solid #667eea;
+        }
+
+        .app-card.oceanengine {
+            border-top: 4px solid #ff6b6b;
+        }
+
+        .app-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .app-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-desc {
+            color: #718096;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .app-info {
+            background: #f7fafc;
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .app-info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .label {
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        .value {
+            color: #2d3748;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-qianchuan {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-qianchuan:hover {
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-oceanengine {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+        }
+
+        .btn-oceanengine:hover {
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .badge {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 2rem;
+            opacity: 0.9;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 AI智能投放平台</h1>
+            <p class="subtitle">选择应用进行OAuth授权</p>
+        </div>
+
+        <div class="apps-grid">
+            <!-- 巨量千川 -->
+            <div class="app-card qianchuan" onclick="openQianchuan()">
+                <div class="app-icon">
+                    <svg width="60" height="60" viewBox="0 0 512 512" fill="none">
+                        <circle cx="256" cy="256" r="220" fill="#667eea" opacity="0.1"/>
+                        <path d="M256 100C167.2 100 100 167.2 100 256C100 344.8 167.2 412 256 412" stroke="#667eea" stroke-width="20" fill="none"/>
+                        <circle cx="380" cy="256" r="40" fill="none" stroke="#764ba2" stroke-width="8"/>
+                        <circle cx="380" cy="256" r="15" fill="#764ba2"/>
+                    </svg>
+                </div>
+                <div class="app-title">
+                    🛒 AI智能千川
+                    <span class="badge">已上线</span>
+                </div>
+                <div class="app-desc">
+                    专注于抖音电商直播带货、短视频带货的千川随心推广告投放系统
+                </div>
+                <div class="app-info">
+                    <div class="app-info-row">
+                        <span class="label">App ID</span>
+                        <span class="value">1846842779198378</span>
+                    </div>
+                    <div class="app-info-row">
+                        <span class="label">产品线</span>
+                        <span class="value">巨量千川</span>
+                    </div>
+                    <div class="app-info-row">
+                        <span class="label">接入能力</span>
+                        <span class="value">千川随心推</span>
+                    </div>
+                </div>
+                <button class="btn btn-qianchuan">
+                    🚀 开始千川授权
+                </button>
+            </div>
+
+            <!-- 巨量广告 -->
+            <div class="app-card oceanengine" onclick="openOceanengine()">
+                <div class="app-icon">
+                    <svg width="60" height="60" viewBox="0 0 512 512" fill="none">
+                        <circle cx="256" cy="256" r="220" fill="#ff6b6b" opacity="0.1"/>
+                        <path d="M256 100C167.2 100 100 167.2 100 256C100 344.8 167.2 412 256 412" stroke="#ff6b6b" stroke-width="20" fill="none"/>
+                        <circle cx="380" cy="256" r="40" fill="none" stroke="#ee5a6f" stroke-width="8"/>
+                        <circle cx="380" cy="256" r="15" fill="#ee5a6f"/>
+                    </svg>
+                </div>
+                <div class="app-title">
+                    📢 AI智能广告
+                    <span class="badge">已上线</span>
+                </div>
+                <div class="app-desc">
+                    专注于今日头条、抖音、西瓜视频等平台的信息流广告投放系统（PC版）
+                </div>
+                <div class="app-info">
+                    <div class="app-info-row">
+                        <span class="label">App ID</span>
+                        <span class="value">1846842779198394</span>
+                    </div>
+                    <div class="app-info-row">
+                        <span class="label">产品线</span>
+                        <span class="value">巨量广告</span>
+                    </div>
+                    <div class="app-info-row">
+                        <span class="label">接入能力</span>
+                        <span class="value">巨量广告PC版</span>
+                    </div>
+                </div>
+                <button class="btn btn-oceanengine">
+                    🚀 开始广告授权
+                </button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>💡 提示：两个应用可独立授权使用</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="/">返回主应用</a> | 
+                <a href="/APPS_CONFIG.md" target="_blank">查看配置文档</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function openQianchuan() {
+            window.location.href = '/oauth-helper.html';
+        }
+
+        function openOceanengine() {
+            window.location.href = '/oauth-oceanengine.html';
+        }
+
+        console.log('OAuth Index loaded');
+        console.log('Applications:');
+        console.log('1. 千川 - App ID: 1846842779198378');
+        console.log('2. 广告 - App ID: 1846842779198394');
+    </script>
+</body>
+</html>

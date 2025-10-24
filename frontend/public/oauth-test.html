@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OAuth 授权测试 - 调试版</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #f7fafc;
+        }
+        .card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .log-area {
+            background: #1a202c;
+            color: #68d391;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+        .log-item {
+            margin-bottom: 0.5rem;
+            padding: 0.25rem;
+        }
+        .log-success {
+            color: #68d391;
+        }
+        .log-error {
+            color: #fc8181;
+        }
+        .log-info {
+            color: #63b3ed;
+        }
+        .config {
+            background: #f7fafc;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+        .config-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .config-label {
+            font-weight: 600;
+            color: #4a5568;
+        }
+        .config-value {
+            font-family: monospace;
+            color: #2d3748;
+        }
+        .status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .status-waiting {
+            background: #fef5e7;
+            color: #a67c00;
+        }
+        .status-success {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        .status-error {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🎯 OAuth 授权测试工具</h1>
+        <p style="color: #718096;">带详细调试日志的授权测试页面</p>
+        
+        <div id="status" class="status status-waiting">⏳ 等待授权</div>
+        
+        <div>
+            <button class="btn" onclick="startQianchuanOAuth()">🚀 千川授权测试</button>
+            <button class="btn" onclick="startOceanEngineOAuth()">🌊 巨量广告授权测试</button>
+            <button class="btn" onclick="clearLogs()" style="background: #cbd5e0; color: #2d3748;">🗑️ 清空日志</button>
+        </div>
+
+        <div class="config">
+            <h3 style="margin-top: 0;">当前配置</h3>
+            <div class="config-item">
+                <span class="config-label">千川 App ID:</span>
+                <span class="config-value">1846842779198378</span>
+            </div>
+            <div class="config-item">
+                <span class="config-label">广告 App ID:</span>
+                <span class="config-value">1846842779198394</span>
+            </div>
+            <div class="config-item">
+                <span class="config-label">回调地址:</span>
+                <span class="config-value">http://localhost:8080/callback</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📋 调试日志</h2>
+        <div id="logs" class="log-area"></div>
+    </div>
+
+    <script>
+        let authWindow = null;
+        
+        function log(message, type = 'info') {
+            const logsDiv = document.getElementById('logs');
+            const timestamp = new Date().toLocaleTimeString();
+            const logClass = `log-${type}`;
+            const icon = type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️';
+            
+            logsDiv.innerHTML += `<div class="log-item ${logClass}">[${timestamp}] ${icon} ${message}</div>`;
+            logsDiv.scrollTop = logsDiv.scrollHeight;
+            
+            console.log(`[OAuth Test] ${message}`);
+        }
+
+        function clearLogs() {
+            document.getElementById('logs').innerHTML = '';
+            log('日志已清空', 'info');
+        }
+
+        function updateStatus(text, type) {
+            const statusDiv = document.getElementById('status');
+            statusDiv.textContent = text;
+            statusDiv.className = `status status-${type}`;
+        }
+
+        function startQianchuanOAuth() {
+            log('========== 开始千川授权流程 ==========', 'info');
+            
+            const config = {
+                appId: '1846842779198378',
+                redirectUri: 'http://localhost:8080/callback',
+                state: 'qc_' + Math.random().toString(36).substring(7)
+            };
+            
+            log(`App ID: ${config.appId}`, 'info');
+            log(`State: ${config.state}`, 'info');
+            log(`Redirect URI: ${config.redirectUri}`, 'info');
+            
+            const authUrl = `https://qianchuan.jinritemai.com/openapi/qc/audit/oauth.html?app_id=${config.appId}&state=${config.state}&material_auth=1&rid=wce13kagvdd&redirect_uri=${encodeURIComponent(config.redirectUri)}`;
+            
+            log(`完整授权URL: ${authUrl}`, 'info');
+            log('正在打开授权窗口...', 'info');
+            
+            authWindow = window.open(
+                authUrl,
+                'oauth_window',
+                'width=800,height=600,left=200,top=100'
+            );
+            
+            if (authWindow) {
+                log('✅ 授权窗口已打开', 'success');
+                updateStatus('⏳ 等待用户授权...', 'waiting');
+            } else {
+                log('❌ 无法打开授权窗口（可能被浏览器拦截）', 'error');
+                updateStatus('❌ 窗口打开失败', 'error');
+            }
+        }
+
+        function startOceanEngineOAuth() {
+            log('========== 开始巨量广告授权流程 ==========', 'info');
+            
+            const config = {
+                appId: '1846842779198394',
+                redirectUri: 'http://localhost:8080/callback',
+                state: 'oe_' + Math.random().toString(36).substring(7)
+            };
+            
+            log(`App ID: ${config.appId}`, 'info');
+            log(`State: ${config.state}`, 'info');
+            
+            const authUrl = `https://open.oceanengine.com/audit/oauth.html?app_id=${config.appId}&state=${config.state}&material_auth=1&redirect_uri=${encodeURIComponent(config.redirectUri)}`;
+            
+            log(`完整授权URL: ${authUrl}`, 'info');
+            log('正在打开授权窗口...', 'info');
+            
+            authWindow = window.open(
+                authUrl,
+                'oauth_window',
+                'width=800,height=600,left=200,top=100'
+            );
+            
+            if (authWindow) {
+                log('✅ 授权窗口已打开', 'success');
+                updateStatus('⏳ 等待用户授权...', 'waiting');
+            } else {
+                log('❌ 无法打开授权窗口（可能被浏览器拦截）', 'error');
+                updateStatus('❌ 窗口打开失败', 'error');
+            }
+        }
+
+        // 监听 postMessage 消息
+        window.addEventListener('message', function(event) {
+            log(`收到 postMessage 事件`, 'info');
+            log(`Origin: ${event.origin}`, 'info');
+            log(`Data: ${JSON.stringify(event.data)}`, 'info');
+            
+            if (event.data && event.data.type === 'oauth_callback') {
+                log('========== 🎉 授权成功！ ==========', 'success');
+                log(`授权码 (code): ${event.data.code}`, 'success');
+                log(`状态 (state): ${event.data.state}`, 'success');
+                
+                updateStatus('✅ 授权成功！', 'success');
+                
+                // 关闭授权窗口
+                if (authWindow && !authWindow.closed) {
+                    authWindow.close();
+                    log('已关闭授权窗口', 'info');
+                }
+                
+                // 显示成功提示
+                alert(`✅ 授权成功！\n\n授权码: ${event.data.code}\n\n请查看控制台和日志获取详细信息`);
+            }
+        });
+
+        // 页面加载完成
+        log('OAuth 测试工具已加载', 'info');
+        log('点击上方按钮开始授权测试', 'info');
+    </script>
+</body>
+</html>
