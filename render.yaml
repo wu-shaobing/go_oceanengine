@@ -1,0 +1,23 @@
+services:
+  # 后端 Go 服务
+  - type: web
+    name: go-oceanengine-backend
+    runtime: go
+    buildCommand: cd backend && go build -o main cmd/proxy/main.go
+    startCommand: cd backend && ./main
+    envVars:
+      - key: PROXY_PORT
+        value: 8080
+      - key: APP_TYPE
+        value: qianchuan
+      - key: APP_ID
+        value: "1846842779198378"
+      - key: APP_SECRET
+        value: b541c7b611dc34b0755802818539631b5d766d67
+      - key: QIANCHUAN_ACCESS_TOKEN
+        sync: false
+      - key: QIANCHUAN_REFRESH_TOKEN
+        sync: false
+      - key: QIANCHUAN_ADVERTISER_ID
+        sync: false
+    healthCheckPath: /health
