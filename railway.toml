@@ -1,0 +1,12 @@
+[build]
+builder = "nixpacks"
+buildCommand = "cd backend && go build -o main cmd/proxy/main.go"
+
+[deploy]
+startCommand = "cd backend && ./main"
+restartPolicyType = "on-failure"
+restartPolicyMaxRetries = 10
+
+[[deploy.healthcheck]]
+path = "/health"
+port = 8080
