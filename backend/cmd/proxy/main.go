@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -417,16 +418,25 @@ func (s *ProxyServer) handleAccountBalance(w http.ResponseWriter, r *http.Reques
 func (s *ProxyServer) handleCallback(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	
-	// 获取授权码
-	authCode := r.URL.Query().Get("code")
+	// 获取授权码 - 支持 code 和 auth_code 两种参数名
+	authCode := r.URL.Query().Get("auth_code")
+	if authCode == "" {
+		authCode = r.URL.Query().Get("code")
+	}
 	state := r.URL.Query().Get("state")
+	appID := r.URL.Query().Get("app_id")
 	
 	if authCode == "" {
 		http.Error(w, "Missing authorization code", http.StatusBadRequest)
 		return
 	}
 	
-	log.Printf("[OAuth] Received auth code: %s, state: %s", authCode, state)
+	log.Printf("[OAuth] Received: code=%s, state=%s, app_id=%s", authCode, state, appID)
+	
+	// 自动交换 token（异步执行，不阻塞页面返回）
+	if authCode != "" && appID != "" {
+		go s.exchangeAndSaveToken(authCode, appID)
+	}
 	
 	// 返回成功页面
 	html := `<!DOCTYPE html>
@@ -498,11 +508,178 @@ func (s *ProxyServer) handleCallback(w http.ResponseWriter, r *http.Request) {
 		setTimeout(() => {
 			console.log('Closing window...');
 			window.close();
-		}, 3000);
+	}, 3000);
 	</script>
 </body>
 </html>`
 	w.Write([]byte(html))
+}
+
+// exchangeAndSaveToken 自动交换并保存 access token
+func (s *ProxyServer) exchangeAndSaveToken(authCode, appID string) {
+	log.Printf("[Token Exchange] 开始交换 token...")
+	
+	var tokenURL, appSecret, prefix string
+	
+	// 根据 app_id 确定使用哪个 API
+	if appID == "1846842779198378" {
+		// 千川
+		tokenURL = "https://qianchuan.jinritemai.com/open_api/oauth2/access_token/"
+		appSecret = "b541c7b611dc34b0755802818539631b5d766d67"
+		prefix = "QIANCHUAN"
+		log.Printf("[Token Exchange] 使用千川 API")
+	} else if appID == "1846842779198394" {
+		// 巨量广告
+		tokenURL = "https://api.oceanengine.com/open_api/oauth2/access_token/"
+		appSecret = os.Getenv("OCEANENGINE_APP_SECRET")
+		if appSecret == "" {
+			appSecret = "your_secret_here" // 需要配置
+		}
+		prefix = "OCEANENGINE"
+		log.Printf("[Token Exchange] 使用巨量广告 API")
+	} else {
+		log.Printf("[Token Exchange] ❌ 未知的 app_id: %s", appID)
+		return
+	}
+	
+	// 构造请求
+	reqBody := map[string]interface{}{
+		"app_id":    appID,
+		"secret":    appSecret,
+		"auth_code": authCode,
+	}
+	
+	jsonData, err := json.Marshal(reqBody)
+	if err != nil {
+		log.Printf("[Token Exchange] ❌ JSON 序列化失败: %v", err)
+		return
+	}
+	
+	log.Printf("[Token Exchange] 请求 URL: %s", tokenURL)
+	
+	// 发送请求
+	resp, err := http.Post(tokenURL, "application/json", strings.NewReader(string(jsonData)))
+	if err != nil {
+		log.Printf("[Token Exchange] ❌ 请求失败: %v", err)
+		return
+	}
+	defer resp.Body.Close()
+	
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		log.Printf("[Token Exchange] ❌ 读取响应失败: %v", err)
+		return
+	}
+	
+	log.Printf("[Token Exchange] 响应状态: %d", resp.StatusCode)
+	log.Printf("[Token Exchange] 响应内容: %s", string(body))
+	
+	// 解析响应
+	var result map[string]interface{}
+	if err := json.Unmarshal(body, &result); err != nil {
+		log.Printf("[Token Exchange] ❌ JSON 解析失败: %v", err)
+		return
+	}
+	
+	// 检查是否成功
+	code, ok := result["code"].(float64)
+	if !ok || code != 0 {
+		message := "未知错误"
+		if msg, ok := result["message"].(string); ok {
+			message = msg
+		}
+		log.Printf("[Token Exchange] ❌ 交换失败 (code=%v): %s", code, message)
+		return
+	}
+	
+	// 提取 token 数据
+	data, ok := result["data"].(map[string]interface{})
+	if !ok {
+		log.Printf("[Token Exchange] ❌ 响应数据格式错误")
+		return
+	}
+	
+	accessToken, _ := data["access_token"].(string)
+	refreshToken, _ := data["refresh_token"].(string)
+	expiresIn, _ := data["expires_in"].(float64)
+	
+	if accessToken == "" {
+		log.Printf("[Token Exchange] ❌ access_token 为空")
+		return
+	}
+	
+	log.Printf("")
+	log.Printf("========================================")
+	log.Printf("✅ [Token Exchange] 成功获取 Token！")
+	log.Printf("========================================")
+	log.Printf("📝 Access Token: %s", accessToken)
+	log.Printf("🔄 Refresh Token: %s", refreshToken)
+	log.Printf("⏰ 过期时间: %.0f 秒 (约 %.1f 小时)", expiresIn, expiresIn/3600)
+	
+	// 保存到 .env 文件
+	if err := s.saveTokenToEnv(accessToken, refreshToken, prefix); err != nil {
+		log.Printf("[Token Exchange] ⚠️  保存失败: %v", err)
+		log.Printf("请手动添加到 .env 文件：")
+		log.Printf("%s_ACCESS_TOKEN=%s", prefix, accessToken)
+		log.Printf("%s_REFRESH_TOKEN=%s", prefix, refreshToken)
+	} else {
+		log.Printf("✅ [Token Exchange] Token 已保存到 .env 文件")
+		log.Printf("⚠️  请重启后端服务器以使用新的 token")
+	}
+	log.Printf("========================================")
+	log.Printf("")
+}
+
+// saveTokenToEnv 保存 token 到 .env 文件
+func (s *ProxyServer) saveTokenToEnv(accessToken, refreshToken, prefix string) error {
+	envPath := ".env"
+	if _, err := os.Stat(envPath); os.IsNotExist(err) {
+		// 尝试 backend/.env
+		envPath = "backend/.env"
+		if _, err := os.Stat(envPath); os.IsNotExist(err) {
+			return fmt.Errorf(".env 文件不存在")
+		}
+	}
+	
+	// 读取现有内容
+	data, err := os.ReadFile(envPath)
+	if err != nil {
+		return fmt.Errorf("读取 .env 失败: %w", err)
+	}
+	
+	lines := strings.Split(string(data), "\n")
+	accessTokenKey := prefix + "_ACCESS_TOKEN="
+	refreshTokenKey := prefix + "_REFRESH_TOKEN="
+	
+	accessTokenUpdated := false
+	refreshTokenUpdated := false
+	
+	// 更新现有行
+	for i, line := range lines {
+		if strings.HasPrefix(line, accessTokenKey) {
+			lines[i] = accessTokenKey + accessToken
+			accessTokenUpdated = true
+		} else if strings.HasPrefix(line, refreshTokenKey) {
+			lines[i] = refreshTokenKey + refreshToken
+			refreshTokenUpdated = true
+		}
+	}
+	
+	// 如果没有找到，添加新行
+	if !accessTokenUpdated {
+		lines = append(lines, accessTokenKey+accessToken)
+	}
+	if !refreshTokenUpdated && refreshToken != "" {
+		lines = append(lines, refreshTokenKey+refreshToken)
+	}
+	
+	// 写回文件
+	newData := strings.Join(lines, "\n")
+	if err := os.WriteFile(envPath, []byte(newData), 0644); err != nil {
+		return fmt.Errorf("写入 .env 失败: %w", err)
+	}
+	
+	return nil
 }
 
 func (s *ProxyServer) handleProxy(w http.ResponseWriter, r *http.Request) {

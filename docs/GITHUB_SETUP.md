@@ -3,7 +3,7 @@
 ## 1. 在GitHub上创建新仓库
 
 1. 访问 https://github.com/new
-2. 仓库名: `ai-ad-platform` (或你喜欢的名字)
+2. 仓库名: `go_oceanengine` (或你喜欢的名字)
 3. 描述: AI智能投放全栈项目 - 千川+巨量广告管理平台
 4. 选择 Public 或 Private
 5. **不要**勾选 "Initialize with README" (我们已经有了)
